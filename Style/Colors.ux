@@ -1,0 +1,6 @@
+<Panel ux:Class="Style.Colors">
+    <float4 ux:Global="ApplicationBackgroundColor" ux:Value="#0003" />
+    <float4 ux:Global="ViewBackgroundColor" ux:Value="#fff" />
+
+    <float4 ux:Global="PrimaryColor" ux:Value="#E91E63" />
+</Panel>

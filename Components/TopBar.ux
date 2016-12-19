@@ -1,0 +1,3 @@
+<Panel ux:Class="TopBar" Height="{Resource TopBarHeight}" Color="{Resource PrimaryColor}">
+
+</Panel>

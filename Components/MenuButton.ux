@@ -1,0 +1,19 @@
+<Panel ux:Class="MenuButton" HitTestMode="LocalVisualAndChildren"
+    Height="{Resource MenuButtonSize}" Width="{Resource MenuButtonSize}">
+    <Panel ux:Name="menuButtonBody" Color="#fff2" Padding="12">
+        <Rectangle ux:Name="menuButtonIcon" Color="#fff">
+            <Mask Mode="Alpha">
+                <FileImageSource File="../Assets/Icons/ic_more_vert_black_48dp.png" />
+            </Mask>
+        </Rectangle>
+    </Panel>
+
+    <WhileTrue ux:Name="menuButtonActive">
+        <Change Target="menuButtonBody.Color" Value="#fff6" Duration=".3" />
+    </WhileTrue>
+
+    <Clicked>
+        <RaiseUserEvent EventName="toggleMenu" />
+        <Toggle Target="menuButtonActive" />
+    </Clicked>
+</Panel>

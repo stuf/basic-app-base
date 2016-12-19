@@ -1,0 +1,19 @@
+{
+  "RootNamespace": "",
+  "Version": "0.1.0",
+  "Packages": [
+    "Fuse",
+    "FuseJS"
+  ],
+  "Includes": [
+    "*",
+    "Assets/Icons/*.png:Bundle",
+    "Assets/Fonts/*.+(otf|ttf):Bundle"
+  ],
+  "Projects": [
+  ],
+  "Excludes": [
+    "node_modules",
+    "NPM-Packages"
+  ]
+}

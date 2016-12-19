@@ -1,0 +1,37 @@
+<!-- Main application menu component
+  ** Provides a component that displays the main application menu for the application.
+     Menu items are defined as an Observable list of items, so that we can make changes
+     to the items on-the-fly.
+  -->
+<Panel ux:Class="AppMenu">
+    <Router ux:Dependency="router" />
+    <UserEvent ux:Dependency="onNavigate" />
+
+    <JavaScript File="AppMenu.js" />
+
+    <!-- Define a single menu item -->
+    <Panel ux:Class="AppMenuItem">
+        <string ux:Property="Title" />
+
+        <Panel>
+            <Text Value="{Property Title}" />
+        </Panel>
+    </Panel>
+
+    <!-- We're using deferred here to mark these items as "not important".
+         This results in these being created when they're ready for the visual tree,
+         and doesn't cause any (possibly) sluggish performance on the main UI.
+
+         TODO: Finish me
+      -->
+    <Deferred>
+        <StackPanel Alignment="Right">
+            <StatusBarBackground />
+            <StackPanel Offset="{Resource TopBarOffset}" Padding="{Resource BasePadding}">
+                <Each Items="{menuItems}">
+                    <AppMenuItem Title="{title}" Clicked="{navigateToRoute}" />
+                </Each>
+            </StackPanel>
+        </StackPanel>
+    </Deferred>
+</Panel>

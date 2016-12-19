@@ -1,0 +1,7 @@
+<Panel ux:Class="Style.Metrics">
+    <Size2 ux:Global="TopBarOffset" ux:Value="0, 48" />
+    <Size ux:Global="TopBarHeight" ux:Value="48" />
+    <Size ux:Global="MenuButtonSize" ux:Value="48" />
+
+    <float4 ux:Global="BasePadding" ux:Value="18" />
+</Panel>

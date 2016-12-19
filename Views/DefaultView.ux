@@ -1,0 +1,75 @@
+<!-- Default view
+  -->
+<Panel ux:Class="Views.DefaultView" Color="{Resource ApplicationBackgroundColor}">
+    <Router ux:Name="router" />
+    <UserEvent Name="toggleMenu" />
+
+    <!-- Menu button (with push for the statusbar) -->
+    <StackPanel Alignment="TopRight">
+        <StatusBarBackground />
+        <MenuButton />
+    </StackPanel>
+
+    <!-- Display the application menu
+       - We will need to pass the router as a dependency to the menu component
+       - due to dependencies not being automatically forwarded of subclasses.
+       - 
+       - Additionally, we'll set this as the "underlay", to make it appear behind
+       - the main content. -->
+    <Panel Layer="Underlay">
+        <AppMenu router="router" onNavigate="toggleMenu" />
+    </Panel>
+
+    <!-- Show an invisible overlay that can be clicked, which toggles the menu -->
+    <WhileTrue ux:Name="showMenuOverlay">
+        <!-- Because by default a panel without `Alignment` specified takes up all its
+           - parent element's size, we can create a simple panel and attach a `Clicked`
+           - handler to it, and we can have our clickable overlay for the menu.
+           -
+           - Also make sure to shift the overlay the same amount as the main content
+           - to allow the application menu's items to be clicked.
+           - -->
+        <Panel Color="#f005" Offset="-55%, 0" HitTestMode="LocalBoundsAndChildren">
+            <Clicked>
+                <RaiseUserEvent EventName="toggleMenu" />
+            </Clicked>
+        </Panel>
+    </WhileTrue>
+
+    <!-- The main application view -->
+    <ClientPanel ux:Name="viewPanel" Color="{Resource ViewBackgroundColor}">
+        <Navigator ux:Name="mainNavigator" DefaultPath="home">
+            <Page ux:Template="home">
+                <DockPanel>
+                    <TopBar Dock="Top" />
+
+                    <Panel Alignment="Center" Padding="40">
+                        <Text FontSize="40" TextWrapping="Wrap" TextAlignment="Center">
+                            Nothing to see here.
+                        </Text>
+                    </Panel>
+                </DockPanel>
+            </Page>
+            <Page ux:Template="anotherPage">
+                <DockPanel>
+                    <TopBar Dock="Top" />
+
+                    <Panel Alignment="Center" Padding="40">
+                        <Text Value="Another page" />
+                    </Panel>
+                </DockPanel>
+            </Page>
+        </Navigator>
+
+        <!-- Layout when the menu is visible -->
+        <WhileTrue ux:Name="shiftViewPanel">
+            <Move X="-0.55" RelativeTo="ParentSize" Duration=".25" Easing="QuadraticInOut" />
+        </WhileTrue>
+    </ClientPanel>
+
+    <!-- Event handler for menu toggling -->
+    <OnUserEvent EventName="toggleMenu">
+        <Toggle Target="shiftViewPanel" />
+        <Toggle Target="showMenuOverlay" />
+    </OnUserEvent>
+</Panel>

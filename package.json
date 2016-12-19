@@ -1,0 +1,14 @@
+{
+  "name": "basic-app-base",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Stefan Rimaila <stefan@rimaila.fi>",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "nfuse"
+  },
+  "devDependencies": {
+    "nfuse": "^2.2.3"
+  },
+  "dependencies": {}
+}

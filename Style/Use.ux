@@ -1,0 +1,5 @@
+<Panel ux:Class="Style.Use">
+    <Style.Colors />
+    <Style.Metrics />
+    <Style.Fonts />
+</Panel>

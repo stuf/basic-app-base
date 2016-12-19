@@ -1,0 +1,7 @@
+<App>
+    <Style.Use />
+    <iOS.StatusBarConfig Style="Dark" />
+    <Android.StatusBarConfig Color="#0003" />
+
+    <Views.DefaultView />
+</App>
